@@ -66,8 +66,7 @@ public class FrontController extends HttpServlet {
                 request.setAttribute("books", books);
                 rd = request.getRequestDispatcher("JSP/SearchResults.jsp");
                 break;
-            case "back":
-                rd = request.getRequestDispatcher("JSP/SearchPage.jsp");
+
             default:
                 rd = request.getRequestDispatcher("JSP/SearchResults.jsp");
 

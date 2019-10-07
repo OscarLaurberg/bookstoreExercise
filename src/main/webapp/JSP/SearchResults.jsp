@@ -15,43 +15,42 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Search results:</h1>
-        <% List<Book> books = (List) request.getAttribute("books"); %>
-        <table bgcolor="#085380" border="4" cellpadding="5">
-            <thead><tr>
-                    <th> </th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead><tbody>
+        <form action="FrontController">
 
-                <%
-                    for (Book book : books) {
-                %>
+            <h1>Search results:</h1>
+            <% List<Book> books = (List) request.getAttribute("books"); %>
+            <table bgcolor="#085380" border="4" cellpadding="5">
+                <thead><tr>
+                        <th> </th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead><tbody>
 
-
-                <tr>
-                    <td> <%=book.getId()%> </td>
-                    <td> <%=book.getTitle()%> </td>
-                    <td> <%=book.getAuthor()%>  </td>
-                    <td><%=book.getPrice()%>  </td>
-                    <td><input type="number" maxlength="2" size="2" name=""<%=book.getId()%> value="" /></td>
-                </tr>
-                <%
-                    }
-                %>
-
-            </tbody></table>
-        <br>
-        <br>
-        <input type=\"button\" style=\"background-color:#085380;color:blue;width:110px
-               height:40px value='ORDER' />
-        
-        
-    </form>
+                    <%
+                        for (Book book : books) {
+                    %>
 
 
-</body>
+                    <tr>
+                        <td> <%=book.getId()%> </td>
+                        <td> <%=book.getTitle()%> </td>
+                        <td> <%=book.getAuthor()%>  </td>
+                        <td><%=book.getPrice()%>  </td>
+                        <td><input type="number" maxlength="2" size="2" name=""<%=book.getId()%> value="" /></td>
+                    </tr>
+                    <%
+                        }
+                    %>
+
+                </tbody></table>
+            <br>
+            <br>
+            <button type="button" name="back" onclick="history.back()">back</button>
+        </form>
+
+
+    </body>
 </html>
