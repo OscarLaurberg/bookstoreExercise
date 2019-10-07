@@ -26,9 +26,9 @@ public class BookMapper implements BookMapperInterface {
         String sql = "SELECT * FROM ebooks where title = ?";
         ResultSet rs = null;
         try {
-            PreparedStatement stmt = DB.getConnection().prepareStatement(sql);
-            stmt.setString(1, title);
-            rs = stmt.executeQuery();
+            PreparedStatement ps = DB.getConnection().prepareStatement(sql);
+            ps.setString(1, title);
+            rs = ps.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
         }

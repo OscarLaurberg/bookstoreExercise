@@ -9,6 +9,7 @@ import businessLogic.Book;
 import businessLogic.CollectionToHtml;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,7 +39,7 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
         String cmd = request.getParameter("cmd");
         BookMapperInterface mapper = new BookMapper();
-        List<Book> books = null;
+        List<Book> books = new ArrayList<>();
         RequestDispatcher rd = null;
         String title;
         Book book = null;
@@ -65,6 +66,8 @@ public class FrontController extends HttpServlet {
                 request.setAttribute("books", books);
                 rd = request.getRequestDispatcher("JSP/SearchResults.jsp");
                 break;
+            case "back":
+                rd = request.getRequestDispatcher("JSP/SearchPage.jsp");
             default:
                 rd = request.getRequestDispatcher("JSP/SearchResults.jsp");
 
