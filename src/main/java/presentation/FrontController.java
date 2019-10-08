@@ -6,7 +6,6 @@
 package presentation;
 
 import businessLogic.Book;
-import businessLogic.CollectionToHtml;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -66,6 +65,12 @@ public class FrontController extends HttpServlet {
                 request.setAttribute("books", books);
                 rd = request.getRequestDispatcher("JSP/SearchResults.jsp");
                 break;
+                
+            case "order":
+                books = mapper.getAllBooks();
+                request.setAttribute("books", books);
+                rd = request.getRequestDispatcher("JSP/OrderPage.jsp");
+                break;
 
             default:
                 rd = request.getRequestDispatcher("JSP/SearchResults.jsp");
@@ -75,6 +80,8 @@ public class FrontController extends HttpServlet {
         }
         rd.forward(request, response);
     }
+
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
     /**

@@ -64,7 +64,10 @@ public class Book implements Comparable<Book>{
         this.qty = qty;
     }
     
-    
+      @Override
+    public String toString() {
+        return "Book: " + title + ", author: " + author + ", price: " + price + ", id: " + id;
+    }
 
     @Override
     public int compareTo(Book o) {

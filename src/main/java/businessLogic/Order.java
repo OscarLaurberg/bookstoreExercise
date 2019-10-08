@@ -3,30 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package businessLogic;
+package Business;
 
+import businessLogic.Customer;
 import java.util.List;
 
 /**
  *
- * @author oscar
+ * @author Oscar
  */
 public class Order {
     Customer customer;
-    ShoppingCart cart;
 
-    public Order(Customer customer, ShoppingCart cart) {
+    public Order(Customer customer) {
         this.customer = customer;
-        this.cart = cart;
     }
 
     public Customer getCustomer() {
         return customer;
     }
-
-    public List<Book> getBooks() {
-        return cart.getCart();
-    }
+    
     
 
+    
 }

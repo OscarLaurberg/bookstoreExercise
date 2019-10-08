@@ -3,45 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistence;
+package Persistence;
 
+import persistence.DB;
 import businessLogic.Customer;
 import businessLogic.Book;
-import businessLogic.Order;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
 /**
  *
- * @author oscar
+ * @author Oscar
  */
 public class OrderMapper {
-    
-    public void createOrder (Order order) {
-        Customer customer = order.getCustomer();
-        int id = customer.getId();
-        String name = customer.getName();
-        String phone = customer.getPhonenumber();
-        String email = customer.getEmail();
-        List <Book> books = order.getBooks();
-        String insertSql = "INSERT INTO orders (cust_id, ebook_id, price, qty) VALUES (?,?,?,?)";
+
+    public void createOrder(List <Book> books) {
+        
+        String updateSql = "INSERT INTO orders (cust_id,ebook_id,price) VALUES (?,?,?)";
+        
         for (Book book : books) {
+            int customerId = 1;
             int bookId = book.getId();
             int price = book.getPrice();
-            int qty = book.getQty();
-            try{
-                PreparedStatement ps = DB.getConnection().prepareStatement(insertSql);
-                ps.setInt(1, id);
-                ps.setInt(2, bookId);
-                ps.setInt(3, price);
-                ps.setInt(4, qty);
-                ps.executeUpdate();
-            }catch (SQLException e){
+            try {
+                PreparedStatement stmt = DB.getConnection().prepareStatement(updateSql);
+                stmt.setInt(1, customerId);
+                stmt.setInt(2, bookId);
+                stmt.setInt(3, price);
+                stmt.executeUpdate();
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        
     }
-    
 }
